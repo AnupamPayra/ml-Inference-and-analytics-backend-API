@@ -51,7 +51,7 @@ class UnauthorizedAccess(Exception):
 
 def unauthorized_access_handler(request: Request, exc : UnauthorizedAccess):
     return JSONResponse(
-        status_code=404,
+        status_code=403,
         content={
             "message": f"You are not authorized to Make any changes with the model {exc.model_name}",
             "id": f"Check your id {exc.id} again",

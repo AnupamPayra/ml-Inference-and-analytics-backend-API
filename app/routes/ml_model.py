@@ -1,5 +1,4 @@
 from datetime import date, datetime, timezone
-from statistics import mode
 
 from sqlmodel import SQLModel, Field, Session
 from fastapi import Depends, APIRouter
@@ -12,7 +11,7 @@ from exception import DeveloperNotFound, ModelNotFound, UnauthorizedAccess
 route = APIRouter(prefix="/ml_models", tags=["ML-model management"])
 
 
-@route.post("/new{developer_id}", response_model=ModelResponse)
+@route.post("/new/{developer_id}", response_model=ModelResponse)
 def model_registration(
     developer_id: int,
     data: ModelRegistration,

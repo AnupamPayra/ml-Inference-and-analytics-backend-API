@@ -40,7 +40,7 @@ class ModelRegistration(SQLModel): #represents a trained model version / experim
     model_name: str
     Version: str
     used_algorithm: str
-    evaluation_metrics: dict = Field(default_factory=dict, sa_column=Column(JSON))
+    evaluation_metrics: dict[str, float]
     active_flag: bool # Is this version currently serving ?
 
 class ModelResponse(SQLModel): #represents a trained model version / experiment run
@@ -56,9 +56,9 @@ class ModelResponse(SQLModel): #represents a trained model version / experiment 
 
 class ModelUpdateValidation(SQLModel): #represents a trained model version / experiment run
     model_id: int
-    model_name: str| None
-    Version: str | None
-    used_algorithm: str | None
-    evaluation_metrics: dict | None
-    active_flag: bool | None# Is this version currently serving ?
+    model_name: str| None = None
+    Version: str | None = None
+    used_algorithm: str | None = None
+    evaluation_metrics: dict | None = None
+    active_flag: bool | None = None# Is this version currently serving ?
 
