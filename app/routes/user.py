@@ -1,4 +1,5 @@
-from fastapi import FastAPI, APIRouter, Depends
+from fastapi import APIRouter, Depends
+from fastapi.responses import JSONResponse
 from sqlmodel import Session
 from app.database.database import get_session
 from app.models.models import PredictionLogValidation
@@ -16,4 +17,10 @@ def make_prediction(
     session.add(final_data)
     session.commit()
     session.refresh(final_data)
+    return JSONResponse(
+        status_code=201,
+        content={
+            "message": "Your prediction is now under process - wait for few seconds "
+        }
+    )
 

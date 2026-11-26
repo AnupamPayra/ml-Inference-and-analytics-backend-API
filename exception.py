@@ -15,3 +15,16 @@ def prediction_not_found(request: Request, exc : PredictionNotFound):
             "id": exc.id
         }
     )
+
+class DeveloperNotFound(Exception):
+    def __init__(self, id):
+        self.id = id
+
+def developer_not_found(request: Request, exc : DeveloperNotFound):
+    return JSONResponse(
+        status_code=404,
+        content={
+            "message": "You are not authorized to check sensitive infoemation",
+            "id": f"Check your id {exc.id} again"
+        }
+    )

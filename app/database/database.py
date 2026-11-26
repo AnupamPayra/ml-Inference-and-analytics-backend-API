@@ -1,4 +1,4 @@
-from sqlmodel import SQLModel, create_engine, Session, dat
+from sqlmodel import SQLModel, create_engine, Session
 
 DATABASEURL = "sqlite:///database.db"
 
